@@ -1,6 +1,6 @@
 import type {JSX} from 'react'
 import { useEffect, useState } from 'react'
-import { Character } from '~/utils.tsx/types'
+import { Character } from '~/utils/types'
 import Card from './card'
 
 export default function Characters():JSX.Element {

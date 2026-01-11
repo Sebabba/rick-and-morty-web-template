@@ -1,5 +1,5 @@
 import type {JSX} from 'react'
-import { Character } from '~/utils.tsx/types'
+import { Character } from '~/utils/types'
 
 type CardProps = {
     item: Character
