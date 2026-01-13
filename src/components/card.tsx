@@ -26,10 +26,6 @@ export default function Card({ item }: CardProps): JSX.Element {
 				<b>Status: </b>
 				{item.status}
 			</p>
-			<p className="character-information">
-				<b>Species: </b>
-				{item.species}
-			</p>
 			{item.type && (
 				<p className="character-information">
 					<b>Type: </b>
