@@ -10,9 +10,10 @@ const Home = () => (
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<main>
-			<h1>Rick and Morty</h1>
-			<h2>Welcome!</h2>
-			<p>See INSTRUCTIONS.md for more information on how to proceed.</p>
+			<header>
+				<h1>Rick and Morty</h1>
+				<h2>Welcome!</h2>
+			</header>
 			<Characters />
 		</main>
 	</>

@@ -4,6 +4,7 @@ import { Character } from '~/utils/types'
 import Card from './card'
 
 export default function Characters():JSX.Element {
+    // setup the states
     const [items, setItems] = useState<Character[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
@@ -29,19 +30,23 @@ export default function Characters():JSX.Element {
             }
         };
 
+        // fetch data only if we have more data to fetch
         if (hasMore)
             fetchData();
     }, [page])
 
+    // infinite scroller implementation
     const observer = useRef<IntersectionObserver | null>(null)
 
     const lastElementRef = useCallback((node: HTMLDivElement | null) => {
         if (loading)
             return
 
+        // remove the past observer
         if (observer.current)
             observer.current.disconnect()
 
+        // set the new observer
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && hasMore) {
                 setPage(prev => prev + 1)
@@ -54,10 +59,11 @@ export default function Characters():JSX.Element {
 
     return(
         <>
-            <h2>Characters</h2>
+            <h2 id='characters-title'>Characters:</h2>
 
             <div className='grid-container'>
                 {items.map((item, index) => {
+                    // if it is the last element, we attach the observer
                     if (index === items.length - 1) {
                         return (
                             <div ref={lastElementRef} key={item.id}>
