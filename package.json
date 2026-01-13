@@ -5,8 +5,8 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
-		"format": "echo \"You should setup a formatter first. =)\"",
-		"lint": "echo \"You should setup a linter first. =)\"",
+		"format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+		"lint": "next lint",
 		"start": "next start",
 		"test": "jest",
 		"typecheck": "tsc"
@@ -26,8 +26,12 @@
 		"@types/node": "24.0.10",
 		"@types/react": "19.1.8",
 		"@types/react-dom": "19.1.6",
+		"eslint-config-next": "^16.1.1",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.4",
 		"jest": "^30.2.0",
 		"jest-environment-jsdom": "^30.2.0",
+		"prettier": "^3.7.4",
 		"ts-jest": "^29.4.6",
 		"typescript": "5.8.3"
 	},

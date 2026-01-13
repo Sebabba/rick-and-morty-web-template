@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Characters from '~/components/characters'
+import Head from 'next/head';
+import Characters from '~/components/characters';
 
 const Home = () => (
 	<>
@@ -17,6 +17,6 @@ const Home = () => (
 			<Characters />
 		</main>
 	</>
-)
+);
 
-export default Home
+export default Home;
