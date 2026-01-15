@@ -5,6 +5,11 @@
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -112,7 +117,6 @@ header {
 }
 
 .search-container {
-  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -142,9 +146,105 @@ header {
   align-items: center;
   pointer-events: none;
   padding-left: 12px;
+  display: none;
 }
 
 .search-input::placeholder {
   color: #8e8e8e;
   opacity: 1;
+}
+
+.detailsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailsHeader h2 {
+  font-size: xxx-large;
+  font-weight: 400;
+}
+
+.characterDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.characterDetails img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.characterDetails h3 {
+  font-size: 30px;
+  color: #8e8e93;
+  padding: 30px;
+  font-weight: 500;
+}
+
+.goBackSection {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  align-items: center;
+  padding: 10px;
+  width: max-content;
+}
+
+.detailsInformation {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+}
+
+.detailsInformation .detailsName {
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.detailsInformation .detailsValue {
+  color: #6e798c;
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.detailsInformation hr {
+  color: #8e8e93;
+}
+
+.detailsEpisodes {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.detailsEpisodes .detailsEpisodeEpisode {
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.detailsEpisodes .detailsEpisodeName {
+  color: #6e798c;
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.detailsEpisodes .detailsEpisodeAirDate {
+  color: #8e8e93;
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 5px;
 }
