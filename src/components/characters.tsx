@@ -2,6 +2,7 @@ import type { JSX } from 'react';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Character } from '~/utils/types';
 import Card from './card';
+import { Search } from 'lucide-react';
 
 export default function Characters(): JSX.Element {
 	// setup the states
@@ -10,16 +11,17 @@ export default function Characters(): JSX.Element {
 	const [error, setError] = useState<string | null>(null);
 	const [page, setPage] = useState<number>(1);
 	const [hasMore, setHasMore] = useState<boolean>(true);
+	const [name, setName] = useState<string>("");
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setLoading(true);
 				const response = await fetch(
-					`https://rickandmortyapi.com/api/character/?page=${page}`,
+					`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`,
 				);
 
-				if (!response.ok) throw new Error('Fetch error');
+				if (!response.ok) throw new Error("No Character Found");
 
 				const data = await response.json();
 
@@ -34,7 +36,7 @@ export default function Characters(): JSX.Element {
 
 		// fetch data only if we have more data to fetch
 		if (hasMore) fetchData();
-	}, [page]);
+	}, [page, name]);
 
 	// infinite scroller implementation
 	const observer = useRef<IntersectionObserver | null>(null);
@@ -60,8 +62,25 @@ export default function Characters(): JSX.Element {
 
 	return (
 		<>
-			<h2 id="characters-title">Characters:</h2>
-
+			<div className='search-container'>
+				<div className='search-icon'>
+					<Search size={23} />
+				</div>
+				<input
+					id='filter-input'
+					className='search-input'
+					type="text"
+					placeholder="Filter by name..."
+					value={name}
+					onChange={(e) => {
+						setItems([]);
+						setPage(1);
+						setHasMore(true);
+						setError(null);
+						setName(e.target.value);
+					}}
+				/>
+			</div>
 			<div className="grid-container">
 				{items.map((item, index) => {
 					// if it is the last element, we attach the observer

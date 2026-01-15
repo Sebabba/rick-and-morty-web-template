@@ -60,8 +60,6 @@ export default function Characters(): JSX.Element {
 
     return (
         <>
-            <h2 id="characters-title">Characters:</h2>
-
             <div className="grid-container">
                 {items.map((item, index) => {
                     // if it is the last element, we attach the observer
