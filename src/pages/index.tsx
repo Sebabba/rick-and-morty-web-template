@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Characters from '~/components/characters';
-import Link from 'next/link';
 import Navbar from '~/components/navbar';
 import Header from '~/components/header';
 

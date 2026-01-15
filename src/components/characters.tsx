@@ -25,7 +25,9 @@ export default function Characters(): JSX.Element {
 
 				const data = await response.json();
 
-				setItems((prev) => [...prev, ...data.results]);
+				setItems((prev) =>
+					page === 1 ? data.results : [...prev, ...data.results]
+				);
 				setHasMore(data.info.next !== null);
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Unknown error');
@@ -59,7 +61,7 @@ export default function Characters(): JSX.Element {
 		},
 		[loading, hasMore],
 	);
-
+	console.log(items.map(i => i.id))
 	return (
 		<>
 			<div className="search-container">
@@ -92,7 +94,11 @@ export default function Characters(): JSX.Element {
 						);
 					}
 
-					return <Card key={item.id} item={item} />;
+					return (
+						<div key={item.id}>
+							<Card item={item} />
+						</div>
+					)
 				})}
 			</div>
 
