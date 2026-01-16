@@ -6,7 +6,7 @@ import Navbar from '~/components/navbar';
 import { EpisodeType } from '~/utils/types';
 import EpisodeDetails from '~/components/episodeDetails';
 import GoBackButton from '~/components/goBackButton';
-import loadingComponent from '../images/loading-component.png'
+import loadingComponent from '../../images/loading-component.png'
 
 export default function Episode(): JSX.Element {
     const searchParams = useSearchParams();

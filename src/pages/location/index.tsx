@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Navbar from '~/components/navbar';
 import LocationDetails from '~/components/locationDetails';
 import GoBackButton from '~/components/goBackButton';
-import loadingComponent from '../images/loading-component.png'
+import loadingComponent from '../../images/loading-component.png'
 
 export default function Location(): JSX.Element {
     const searchParams = useSearchParams();

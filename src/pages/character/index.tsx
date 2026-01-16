@@ -6,7 +6,7 @@ import CharacterDetails from '~/components/characterDetails';
 import Head from 'next/head';
 import Navbar from '~/components/navbar';
 import GoBackButton from '~/components/goBackButton';
-import loadingComponent from '../images/loading-component.png'
+import loadingComponent from '../../images/loading-component.png'
 
 export default function Character(): JSX.Element {
 	const searchParams = useSearchParams();

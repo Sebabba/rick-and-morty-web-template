@@ -68,7 +68,6 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 								<hr />
 							</>
 						)}
-						{location && 
 						<Link href={{pathname: `/location`, query:{id: location}}}>
 							<div className='detailsLink'>
 								<div>
@@ -77,7 +76,7 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 								</div>
 								<ChevronRight style={{marginRight: "10px"}}/>
 							</div>
-						</Link>}
+						</Link>
 						<hr />
 					</div>
 					<h3 className='detailsSectionTitle'>Episodes</h3>
