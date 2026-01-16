@@ -37,4 +37,47 @@ describe('Card component', () => {
 		expect(imageElement).toBeInTheDocument();
 		expect(imageElement).toHaveAttribute('src', item.image);
 	});
+
+	test('Link has correct href', () => {
+		render(<Card item={item} />);
+
+		const linkElement = screen.getByRole('link');
+		expect(linkElement).toHaveAttribute('href', `/character?id=${item.id}`);
+	});
+
+	test('article has correct class', () => {
+		render(<Card item={item} />);
+
+		const article = screen.getByRole('link').querySelector('article');
+		expect(article).toHaveClass('card');
+	});
+
+	test('image has inline styles', () => {
+		render(<Card item={item} />);
+
+		const image = screen.getByAltText(item.name);
+		expect(image).toHaveStyle({
+			width: '100%',
+			borderRadius: '8px',
+			marginTop: '10px',
+			marginBottom: '10px',
+		});
+	});
+
+	test('renders title and species inside article', () => {
+		render(<Card item={item} />);
+
+		const article = screen.getByRole('link').querySelector('article');
+
+		expect(article).toContainElement(screen.getByText(item.name));
+		expect(article).toContainElement(screen.getByText(item.species));
+	});
+
+	test('renders correctly when image is missing', () => {
+		const itemWithoutImage = { ...item, image: '' };
+		render(<Card item={itemWithoutImage} />);
+
+		const image = screen.queryByAltText(item.name);
+		expect(image).not.toBeInTheDocument();
+	});
 });

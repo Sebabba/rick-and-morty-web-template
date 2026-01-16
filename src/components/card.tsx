@@ -27,8 +27,8 @@ export default function Card({ item }: CardProps): JSX.Element {
 						}}
 					/>
 				)}
-				<h3 className='cardTitle'>{item.name}</h3>
-				<p className='cardSpecie'>{item.species}</p>
+				<h3 className="cardTitle">{item.name}</h3>
+				<p className="cardSpecie">{item.species}</p>
 			</article>
 		</Link>
 	);

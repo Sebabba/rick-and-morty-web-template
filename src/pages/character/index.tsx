@@ -1,12 +1,12 @@
 import type { JSX } from 'react';
 import { CharacterType } from '~/utils/types';
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import CharacterDetails from '~/components/characterDetails';
 import Head from 'next/head';
 import Navbar from '~/components/navbar';
 import GoBackButton from '~/components/goBackButton';
-import loadingComponent from '../../images/loading-component.png'
+import loadingComponent from '../../images/loading-component.png';
 
 export default function Character(): JSX.Element {
 	const searchParams = useSearchParams();
@@ -55,10 +55,10 @@ export default function Character(): JSX.Element {
 
 			{loading && (
 				<div className="status-msg">
-					<img 
-					src={loadingComponent.src} 
-					alt="Caricamento..." 
-					style={{ width: 100, height: 100 }} 
+					<img
+						src={loadingComponent.src}
+						alt="Caricamento..."
+						style={{ width: 100, height: 100 }}
 					/>
 				</div>
 			)}

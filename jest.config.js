@@ -20,4 +20,6 @@ module.exports = {
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 
 	testMatch: ['**/__tests__/**/*.(ts|tsx)', '**/?(*.)+(spec|test).(ts|tsx)'],
+
+	moduleNameMapper: {'\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/fileMock.js',},
 };

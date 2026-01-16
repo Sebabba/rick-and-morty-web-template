@@ -47,4 +47,4 @@ export type LocationType = {
 	residents: string[];
 	url: string;
 	created: string;
-}
+};

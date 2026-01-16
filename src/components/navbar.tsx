@@ -26,13 +26,13 @@ const Navbar = () => {
 							: { transform: 'translateY(-100%)' }
 					}
 				>
-					<Link className="overlay-menu-link" href={{pathname: '/'}}>
+					<Link className="overlay-menu-link" href={{ pathname: '/' }}>
 						Characters
 					</Link>
-					<Link className="overlay-menu-link" href={{pathname: '/locations'}}>
+					<Link className="overlay-menu-link" href={{ pathname: '/locations' }}>
 						Locations
 					</Link>
-					<Link className="overlay-menu-link" href={{pathname: '/episodes'}}>
+					<Link className="overlay-menu-link" href={{ pathname: '/episodes' }}>
 						Episodes
 					</Link>
 				</div>

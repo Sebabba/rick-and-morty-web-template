@@ -4,7 +4,7 @@ import { CharacterType } from '~/utils/types';
 import Card from './card';
 import { Search } from 'lucide-react';
 import Image from 'next/image';
-import loadingComponent from '../images/loading-component.png'
+import loadingComponent from '../images/loading-component.png';
 
 export default function Characters(): JSX.Element {
 	// setup the states
@@ -15,17 +15,17 @@ export default function Characters(): JSX.Element {
 	const [hasMore, setHasMore] = useState<boolean>(true);
 	const [name, setName] = useState<string>('');
 
-	const [filterOpen, setFilterOpen] = useState(false)
-	const [species, setSpecies] = useState('')
-	const [gender, setGender] = useState('')
-	const [status, setStatus] = useState('')
+	const [filterOpen, setFilterOpen] = useState(false);
+	const [species, setSpecies] = useState('');
+	const [gender, setGender] = useState('');
+	const [status, setStatus] = useState('');
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setLoading(true);
 				const response = await fetch(
-					`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&species=${species}&gender=${gender}&status=${status}`
+					`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&species=${species}&gender=${gender}&status=${status}`,
 				);
 
 				if (!response.ok) throw new Error('No Character Found');
@@ -33,7 +33,7 @@ export default function Characters(): JSX.Element {
 				const data = await response.json();
 
 				setItems((prev) =>
-					page === 1 ? data.results : [...prev, ...data.results]
+					page === 1 ? data.results : [...prev, ...data.results],
 				);
 				setHasMore(data.info.next !== null);
 			} catch (err) {
@@ -68,7 +68,7 @@ export default function Characters(): JSX.Element {
 		},
 		[loading, hasMore],
 	);
-	
+
 	return (
 		<>
 			<div className="search-container">
@@ -90,60 +90,78 @@ export default function Characters(): JSX.Element {
 					}}
 				/>
 			</div>
-			<div className='search-container'>
-				<button onClick={() => setFilterOpen(!filterOpen)} className="filter-button">
+			<div className="search-container">
+				<button
+					onClick={() => setFilterOpen(!filterOpen)}
+					className="filter-button"
+				>
 					ADVANCED FILTERS
 				</button>
 			</div>
-			
+
 			{filterOpen && (
 				<div className="modal-overlay" onClick={() => setFilterOpen(false)}>
 					<div className="modal-content" onClick={(e) => e.stopPropagation()}>
-					<h3 style={{marginBottom: "10px"}}>Filters</h3>
+						<h3 style={{ marginBottom: '10px' }}>Filters</h3>
 
-					<div className="modal-field">
-						<select value={species} onChange={(e) => setSpecies(e.target.value)}>
-						<option value="" disabled selected hidden>Species</option>
-						<option value="">Any</option>
-						<option value="Human">Human</option>
-						<option value="Alien">Alien</option>
-						<option value="Robot">Robot</option>
-						</select>
-					</div>
+						<div className="modal-field">
+							<select
+								value={species}
+								onChange={(e) => setSpecies(e.target.value)}
+							>
+								<option value="" disabled selected hidden>
+									Species
+								</option>
+								<option value="">Any</option>
+								<option value="Human">Human</option>
+								<option value="Alien">Alien</option>
+								<option value="Robot">Robot</option>
+							</select>
+						</div>
 
-					<div className="modal-field">
-						<select value={gender} onChange={(e) => setGender(e.target.value)}>
-						<option value="" disabled selected hidden>Gender</option>
-						<option value="">Any</option>
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
-						<option value="Genderless">Genderless</option>
-						<option value="unknown">Unknown</option>
-						</select>
-					</div>
+						<div className="modal-field">
+							<select
+								value={gender}
+								onChange={(e) => setGender(e.target.value)}
+							>
+								<option value="" disabled selected hidden>
+									Gender
+								</option>
+								<option value="">Any</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+								<option value="Genderless">Genderless</option>
+								<option value="unknown">Unknown</option>
+							</select>
+						</div>
 
-					<div className="modal-field">
-						<select value={status} onChange={(e) => setStatus(e.target.value)}>
-						<option value="" disabled selected hidden>Status</option>
-						<option value="">Any</option>
-						<option value="Alive">Alive</option>
-						<option value="Dead">Dead</option>
-						<option value="unknown">Unknown</option>
-						</select>
-					</div>
+						<div className="modal-field">
+							<select
+								value={status}
+								onChange={(e) => setStatus(e.target.value)}
+							>
+								<option value="" disabled selected hidden>
+									Status
+								</option>
+								<option value="">Any</option>
+								<option value="Alive">Alive</option>
+								<option value="Dead">Dead</option>
+								<option value="unknown">Unknown</option>
+							</select>
+						</div>
 
-					<button
-						className="filter-button"
-						onClick={() => {
-						setItems([])
-						setPage(1)
-						setHasMore(true)
-						setError(null)
-						setFilterOpen(false)
-						}}
-					>
-						Apply
-					</button>
+						<button
+							className="filter-button"
+							onClick={() => {
+								setItems([]);
+								setPage(1);
+								setHasMore(true);
+								setError(null);
+								setFilterOpen(false);
+							}}
+						>
+							Apply
+						</button>
 					</div>
 				</div>
 			)}
@@ -163,16 +181,16 @@ export default function Characters(): JSX.Element {
 						<div key={item.id}>
 							<Card item={item} />
 						</div>
-					)
+					);
 				})}
 			</div>
-			
+
 			{loading && (
 				<div className="status-msg">
-					<img 
-					src={loadingComponent.src} 
-					alt="Caricamento..." 
-					style={{ width: 100, height: 100 }} 
+					<img
+						src={loadingComponent.src}
+						alt="Caricamento..."
+						style={{ width: 100, height: 100 }}
 					/>
 				</div>
 			)}

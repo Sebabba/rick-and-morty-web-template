@@ -3,7 +3,7 @@ import { CharacterType } from '~/utils/types';
 import { EpisodeType } from '~/utils/types';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
-import loadingComponent from '../images/loading-component.png'
+import loadingComponent from '../images/loading-component.png';
 
 type CardProps = {
 	item: CharacterType | undefined;
@@ -47,7 +47,7 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 						{item.image && <img src={item.image} alt={item.name} />}
 						<h2>{item.name}</h2>
 					</div>
-					<h3 className='detailsSectionTitle'>Informations</h3>
+					<h3 className="detailsSectionTitle">Informations</h3>
 					<div className="detailsInformation">
 						<p className="detailsName">Gender</p>
 						<p className="detailsValue">{item.gender}</p>
@@ -68,30 +68,36 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 								<hr />
 							</>
 						)}
-						<Link href={{pathname: `/location`, query:{id: location}}}>
-							<div className='detailsLink'>
+						<Link href={{ pathname: `/location`, query: { id: location } }}>
+							<div className="detailsLink">
 								<div>
 									<p className="detailsName">Location</p>
 									<p className="detailsValue">{item.location.name}</p>
 								</div>
-								<ChevronRight style={{marginRight: "10px"}}/>
+								<ChevronRight style={{ marginRight: '10px' }} />
 							</div>
 						</Link>
 						<hr />
 					</div>
-					<h3 className='detailsSectionTitle'>Episodes</h3>
+					<h3 className="detailsSectionTitle">Episodes</h3>
 					<div className="detailsEpisodes">
 						{episodes.map((episode: EpisodeType) => {
 							return (
 								<>
-									<Link href={{pathname: `/episode`, query:{id: episode.id}}}>
-										<div className='detailsLink'>
+									<Link
+										href={{ pathname: `/episode`, query: { id: episode.id } }}
+									>
+										<div className="detailsLink">
 											<div>
-												<p className="detailsEpisodeEpisode">{episode.episode}</p>
+												<p className="detailsEpisodeEpisode">
+													{episode.episode}
+												</p>
 												<p className="detailsEpisodeName">{episode.name}</p>
-												<p className="detailsEpisodeAirDate">{episode.air_date}</p>
+												<p className="detailsEpisodeAirDate">
+													{episode.air_date}
+												</p>
 											</div>
-											<ChevronRight style={{marginRight: "10px"}}/>
+											<ChevronRight style={{ marginRight: '10px' }} />
 										</div>
 									</Link>
 									<hr />
@@ -103,16 +109,15 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 
 				{loading && (
 					<div className="status-msg">
-						<img 
-						src={loadingComponent.src} 
-						alt="Caricamento..." 
-						style={{ width: 100, height: 100 }} 
+						<img
+							src={loadingComponent.src}
+							alt="Caricamento..."
+							style={{ width: 100, height: 100 }}
 						/>
 					</div>
 				)}
 				{error && <div className="status-msg error">{error}</div>}
 			</>
-
 		);
 	} else {
 		return (
