@@ -19,7 +19,6 @@ export default function Characters(): JSX.Element {
 	const [species, setSpecies] = useState('')
 	const [gender, setGender] = useState('')
 	const [status, setStatus] = useState('')
-	const [filterChanged, setFilterChanged] = useState(false)
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -97,7 +96,6 @@ export default function Characters(): JSX.Element {
 				</button>
 			</div>
 			
-			
 			{filterOpen && (
 				<div className="modal-overlay" onClick={() => setFilterOpen(false)}>
 					<div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -137,7 +135,7 @@ export default function Characters(): JSX.Element {
 					<button
 						className="filter-button"
 						onClick={() => {
-						setItems([])      // reset della lista
+						setItems([])
 						setPage(1)
 						setHasMore(true)
 						setError(null)
