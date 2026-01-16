@@ -51,7 +51,7 @@ export default function EpisodeDetails({item}:CardProps):JSX.Element{
                     </div>
                 </div>
                 <h3 className='detailsSectionTitle'>Residentes</h3>
-                <div className='detailsResidents'>
+                <div className='grid-container'>
                     {characters.map((character: CharacterType) => {
                         return (
                             <>

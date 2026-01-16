@@ -1,6 +1,9 @@
 import { useEffect, useState, type JSX } from 'react';
 import { CharacterType } from '~/utils/types';
 import { EpisodeType } from '~/utils/types';
+import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
+import { LocationType } from '~/utils/types';
 
 type CardProps = {
 	item: CharacterType | undefined;
@@ -10,6 +13,7 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 	const [episodes, setEpisodes] = useState<EpisodeType[]>([]);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
+	const [location, setLocation] = useState<string | null>(null);
 
 	useEffect(() => {
 		if (!item) return;
@@ -22,6 +26,9 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 					const data = await response.json();
 					setEpisodes((prev) => [...prev, data]);
 				}
+				const response = await fetch(item.location.url);
+				const data = await response.json();
+				setLocation(data.id);
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Unknown error');
 			} finally {
@@ -61,8 +68,16 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 								<hr />
 							</>
 						)}
-						<p className="detailsName">Location</p>
-						<p className="detailsValue">{item.location.name}</p>
+						{location && 
+						<Link href={{pathname: `/location`, query:{id: location}}}>
+							<div className='detailsLink'>
+								<div>
+									<p className="detailsName">Location</p>
+									<p className="detailsValue">{item.location.name}</p>
+								</div>
+								<ChevronRight style={{marginRight: "10px"}}/>
+							</div>
+						</Link>}
 						<hr />
 					</div>
 					<h3 className='detailsSectionTitle'>Episodes</h3>
@@ -70,9 +85,16 @@ export default function CharacterDetails({ item }: CardProps): JSX.Element {
 						{episodes.map((episode: EpisodeType) => {
 							return (
 								<>
-									<p className="detailsEpisodeEpisode">{episode.episode}</p>
-									<p className="detailsEpisodeName">{episode.name}</p>
-									<p className="detailsEpisodeAirDate">{episode.air_date}</p>
+									<Link href={{pathname: `/episode`, query:{id: episode.id}}}>
+										<div className='detailsLink'>
+											<div>
+												<p className="detailsEpisodeEpisode">{episode.episode}</p>
+												<p className="detailsEpisodeName">{episode.name}</p>
+												<p className="detailsEpisodeAirDate">{episode.air_date}</p>
+											</div>
+											<ChevronRight style={{marginRight: "10px"}}/>
+										</div>
+									</Link>
 									<hr />
 								</>
 							);
