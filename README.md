@@ -17,6 +17,10 @@ Sebastiano Silipo's project.
 
 ---
 
+## Live Preview
+
+A live preview of the project can be seen  [Here](https://rick-and-morty-characters-db.vercel.app).
+
 ## Quick Start
 
 ### Prerequisites
