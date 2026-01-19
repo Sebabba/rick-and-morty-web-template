@@ -57,7 +57,7 @@ export default function LocationDetails({ item }: CardProps): JSX.Element {
 					<h3 className="detailsSectionTitle">Residentes</h3>
 					<div className="grid-container">
 						{characters.map((character: CharacterType) => {
-							return <Card item={character} />;
+							return <Card key={character.id} item={character} />;
 						})}
 					</div>
 				</div>
